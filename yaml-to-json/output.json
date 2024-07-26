@@ -1,0 +1,53 @@
+{
+  "name": "John Doe",
+  "age": 30,
+  "hola que ase": "hola aaa",
+  "your_are_special": "yes, I am",
+  "single quoutes": "a value 'in' single quotes \\u263A \\n",
+  "double quotes": "☺ ☻ \n",
+  "boolena": true,
+  "array": [
+    "noum1",
+    "noum2"
+  ],
+  "array2": [
+    "haha1",
+    "haha2"
+  ],
+  "address": {
+    "street": "123 Main street",
+    "city": "Anytown",
+    "number": 20
+  },
+  "null": null,
+  "also null": null,
+  "sequence": [
+    "obj1",
+    "obj2",
+    {
+      "obj3": {
+        "key1": "uno",
+        "key2": 2,
+        "key3": "3"
+      }
+    },
+    {
+      "obj4": "cuatro",
+      "obj5": "cinco"
+    }
+  ],
+  "array3": [
+    "noum1",
+    "noum2",
+    [
+      "other",
+      "other2"
+    ],
+    [
+      "other",
+      "other2"
+    ]
+  ],
+  "literal block": "first line\nsecond line\n",
+  "folded block": "first line second line\n"
+}
