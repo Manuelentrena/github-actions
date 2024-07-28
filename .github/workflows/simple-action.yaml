@@ -11,4 +11,4 @@ jobs:
         with:
           who-to-greet: Manuel
       - name: Log Greeting Time
-        run: echo "${{ steps.greet.outputs.time }}"
+        run: echo "::set-output name={greet}::{time}"
