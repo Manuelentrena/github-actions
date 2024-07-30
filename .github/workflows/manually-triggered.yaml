@@ -1,6 +1,11 @@
 name: Manually Triggered
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run the workflow'
+        required: true
+        default: 'main'
 
 jobs:
   log-info:
