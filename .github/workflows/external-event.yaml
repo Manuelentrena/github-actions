@@ -4,6 +4,7 @@ on:
 
 jobs:
     echo-a-string:
-        runs-on: ubuntu-latets
+        runs-on: ubuntu-latest
         steps:
-            - run: echo "Repository Dispatch"
+            - name: "Echo a string"
+              run: echo "Repository Dispatch"
