@@ -1,0 +1,45 @@
+name: Dynamic Matrix
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        description: Operating Systems
+        default: "windows-latest,ubuntu-latest"
+        type: string
+      node-version:
+        description: Node Version
+        default: "14,15,16"
+        type: string
+
+jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix-arrays: ${{ steps.matrix-arrays.outputs.result }}
+    steps:
+      - uses: actions/github-script@v6
+        id: matrix-arrays
+        with:
+          script: "return {os: context.payload.inputs['os'].split(','), 'node-version': context.payload.inputs['node-version'].split(',') }"
+          result-encoding: json
+      - run: echo '${{ steps.matrix-arrays.outputs.result }}'
+      - run: echo "step-output=value" >> $GITHUB_OUTPUT
+        id: step-1
+      - run: echo "step-output=value 2" >> $GITHUB_OUTPUT
+        id: step-2
+      - run: |
+          echo '${{ steps.step-1.outputs.step-output }}'
+          echo '${{ steps.step-2.outputs.step-output }}'
+  node-matrix:
+    needs: prepare-matrix
+    strategy:
+      matrix:
+        os: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).os }}
+        node-version: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).node-version }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: node -v
