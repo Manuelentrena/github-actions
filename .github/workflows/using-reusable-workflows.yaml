@@ -9,7 +9,7 @@ on:
         required: false
 jobs:
   calling-a-reusable-wf:
-    uses: /Manuelentrena/concurrency-github-actions/.github/workflows/reusable.yaml@main
+    uses: manuelentrena/concurrency-github-actions/.github/workflows/reusable.yaml@main
     with:
       name: ${{ inputs.name }}
     secrets:
