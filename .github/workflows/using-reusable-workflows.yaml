@@ -14,3 +14,10 @@ jobs:
       name: ${{ inputs.name }}
     secrets:
       access-token: ${{ secrets.ACCESS_TOKEN }}
+  calling-a-reusable-wf2:
+    uses: manuelentrena/concurrency-github-actions/.github/workflows/reusable-workflow.yaml@main
+  using-reusable-wf-output:
+    runs-on: ubuntu-latest
+    needs: calling-a-reusable-wf2
+    steps:
+      - run: echo ${{ needs.calling-a-reusable-wf2.outputs.date }}
