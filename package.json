@@ -1,0 +1,17 @@
+{
+  "name": "github-actions-workflow-guide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1"
+  }
+}
