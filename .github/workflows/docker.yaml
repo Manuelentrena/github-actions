@@ -25,8 +25,6 @@ jobs:
        run: apk add --no-cache curl
      - name: Send notification to Discord
        run: |
-         curl --version
-         file $(which curl)
          curl -i -H "Accept: application/json" -H "Content-Type:application/json" \
          -X POST --data "{\"content\": \"${DISCORD_MESSAGE}\"}" "${DISCORD_WEBHOOK}"
      - name: Log Node & OS Versions
