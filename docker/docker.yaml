@@ -11,6 +11,8 @@ jobs:
       #   password:
       env:
         API_URL: some-url.com
+        MESSAGE: "Este es mi mensaje"
+        WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
       ports:
         - 80
       # volumes:
@@ -19,6 +21,10 @@ jobs:
       #   - /path/in/host:/path/in/container
       options: --cpus 1
     steps:
+     - name: Send notification to Discord
+       run: |
+         curl -i -H "Accept: application/json" -H "Content-Type:application/json" \
+         -X POST --data "{\"content\": \"${MESSAGE}\"}" "${WEBHOOK_URL}"
      - name: Log Node & OS Versions
        run: |
          node -v
@@ -54,8 +60,3 @@ jobs:
         SLACK_TITLE: From Github Actions
         SLACK_MESSAGE: "Actor: ${{github.actor}}, Event: ${{github.event_name}}"
         SLACK_COLOR: "#723fc4"
-     - name: Send notification to Discord
-       run: |
-        MESSAGE="Este es mi mensaje"
-        WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK }}
-        curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${MESSAGE}\"}" "${WEBHOOK_URL}"
