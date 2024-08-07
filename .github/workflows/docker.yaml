@@ -54,3 +54,7 @@ jobs:
         SLACK_TITLE: From Github Actions
         SLACK_MESSAGE: "Actor: ${{github.actor}}, Event: ${{github.event_name}}"
         SLACK_COLOR: "#723fc4"
+     - name: Send notification to Discord
+       run: |
+         MESSAGE="Hello, this is a notification from GitHub Actions!"
+         curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"${MESSAGE}\"}" ${{ secrets.DISCORD_WEBHOOK }}
