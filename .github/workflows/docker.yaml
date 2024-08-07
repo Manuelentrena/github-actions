@@ -57,5 +57,5 @@ jobs:
      - name: Send notification to Discord
        run: |
         MESSAGE="Este es mi mensaje"
-        WEBHOOK_URL= ${{ secrets.DISCORD_WEBHOOK }}
+        WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK }}
         curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${MESSAGE}\"}" "${WEBHOOK_URL}"
