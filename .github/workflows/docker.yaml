@@ -21,6 +21,8 @@ jobs:
       #   - /path/in/host:/path/in/container
       options: --cpus 1
     steps:
+     - name: Install curl
+       run: apk add --no-cache curl
      - name: Send notification to Discord
        run: |
          curl --version
