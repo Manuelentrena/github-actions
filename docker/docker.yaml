@@ -11,8 +11,8 @@ jobs:
       #   password:
       env:
         API_URL: some-url.com
-        MESSAGE: "Este es mi mensaje"
-        WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_MESSAGE: "Este es mi mensaje"
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       ports:
         - 80
       # volumes:
@@ -24,7 +24,7 @@ jobs:
      - name: Send notification to Discord
        run: |
          curl -i -H "Accept: application/json" -H "Content-Type:application/json" \
-         -X POST --data "{\"content\": \"${MESSAGE}\"}" "${WEBHOOK_URL}"
+         -X POST --data "{\"content\": \"${DISCORD_MESSAGE}\"}" "${DISCORD_WEBHOOK}"
      - name: Log Node & OS Versions
        run: |
          node -v
