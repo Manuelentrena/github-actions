@@ -1,3 +1,3 @@
 #!/bin/sh
-echo "$1"
-node -v
+echo "All arguments: $@"
+echo "First argument: $1"
