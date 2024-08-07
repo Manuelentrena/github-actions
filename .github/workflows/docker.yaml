@@ -57,4 +57,4 @@ jobs:
      - name: Send notification to Discord
        run: |
          MESSAGE="Hello, this is a notification from GitHub Actions!"
-         curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"${MESSAGE}\"}" ${{ secrets.DISCORD_WEBHOOK }}
+         curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${MESSAGE}\"}" ${{ secrets.DISCORD_WEBHOOK }}
