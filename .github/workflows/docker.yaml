@@ -55,7 +55,7 @@ jobs:
         SLACK_MESSAGE: "Actor: ${{github.actor}}, Event: ${{github.event_name}}"
         SLACK_COLOR: "#723fc4"
      - name: Send notification to Discord
-       uses: docker://node:18.16-alpine3.17
-       with:
-        entrypoint: /bin/sh
-        args: -c "./discord.sh 'Este es mi mensaje' '${{ secrets.DISCORD_WEBHOOK }}'"
+       run: |
+        MESSAGE="Este es mi mensaje"
+        WEBHOOK_URL= ${{ secrets.DISCORD_WEBHOOK }}
+        curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${MESSAGE}\"}" "${WEBHOOK_URL}"
