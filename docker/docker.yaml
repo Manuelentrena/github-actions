@@ -55,7 +55,7 @@ jobs:
         SLACK_MESSAGE: "Actor: ${{github.actor}}, Event: ${{github.event_name}}"
         SLACK_COLOR: "#723fc4"
      - name: Install curl
-       run: sudo apt-get update && sudo apt-get install -y curl
+       run: apt-get update && apt-get install -y curl
      - name: Send notification to Discord
        run: |
          MESSAGE="Hello, this is a notification from GitHub Actions!"
