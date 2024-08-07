@@ -54,9 +54,8 @@ jobs:
         SLACK_TITLE: From Github Actions
         SLACK_MESSAGE: "Actor: ${{github.actor}}, Event: ${{github.event_name}}"
         SLACK_COLOR: "#723fc4"
-     - name: Install curl
-       run: apt-get update && apt-get install -y curl
      - name: Send notification to Discord
-       run: |
-         MESSAGE="Hello, this is a notification from GitHub Actions!"
-         curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"${MESSAGE}\"}" ${{ secrets.DISCORD_WEBHOOK }}
+       uses: docker://node:18.16-alpine3.17
+       with:
+        entrypoint: /bin/sh
+        args: -c "./discord.sh 'Este es mi mensaje' '${{ secrets.DISCORD_WEBHOOK }}'"
