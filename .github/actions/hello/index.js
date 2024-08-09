@@ -6,7 +6,7 @@ try {
     core.warning('Warning Message');
     core.error('Error Message');
     
-    const whoToGreet  = core.getInput('who_to_greet', { required: true })
+    const whoToGreet  = core.getInput('who_to_greet')
     
     console.log(`Hello ${whoToGreet}`)
     
