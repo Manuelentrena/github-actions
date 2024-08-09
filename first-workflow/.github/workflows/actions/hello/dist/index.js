@@ -31090,7 +31090,7 @@ try {
     
     console.log(`Hello ${whoToGreet}`)
     
-    const time = new Date().toDateString;
+    const time = new Date().toDateString();
     core.setOutput("time", time)
 
     core.exportVariable("HELLO_TIME", time);

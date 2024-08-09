@@ -6,11 +6,11 @@ try {
     core.warning('Warning Message');
     core.error('Error Message');
     
-    const whoToGreet  = core.getInput('who_to_greet')
+    const whoToGreet  = core.getInput('who_to_greet', { required: true })
     
     console.log(`Hello ${whoToGreet}`)
     
-    const time = new Date().toDateString;
+    const time = new Date().toDateString();
     core.setOutput("time", time)
 
     core.exportVariable("HELLO_TIME", time);
@@ -23,3 +23,4 @@ try {
     // Fail the workflow step if an error occurs
     core.setFailed(error.message)
 }
+
