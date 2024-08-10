@@ -19,13 +19,11 @@ runs:
       shell: bash
       id: joke
       run: |
-        {
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "random_joke<<$EOF"
-          curl -s https://icanhazdadjoke.com/
-          echo ""
-          echo "$EOF" 
-        } >> "$GITHUB_OUTPUT"
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "random_joke<<$EOF" >> "$GITHUB_OUTPUT"
+        curl -s https://icanhazdadjoke.com/ >> "$GITHUB_OUTPUT"
+        echo "" >> "$GITHUB_OUTPUT"
+        echo "$EOF" >> "$GITHUB_OUTPUT"
     - name: Generate Joke File
       shell: bash
       run: echo '${{ steps.joke.outputs.random_joke }}' > joke.txt
